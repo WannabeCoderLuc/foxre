@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff" />
+      <stop offset="100%" stop-color="#0077ff" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Background Badge Hexagon -->
+  <polygon points="50,4 92,26 92,74 50,96 8,74 8,26" fill="#0d141f" stroke="#00e5ff" stroke-width="2.5" />
+  <!-- Inner Tactical Grid -->
+  <line x1="20" y1="50" x2="80" y2="50" stroke="rgba(0, 229, 255, 0.2)" stroke-width="1" stroke-dasharray="2,2" />
+  <line x1="50" y1="20" x2="50" y2="80" stroke="rgba(0, 229, 255, 0.2)" stroke-width="1" stroke-dasharray="2,2" />
+  <!-- Fox Head Geometric Facets -->
+  <polygon points="50,22 30,34 26,16" fill="url(#cyanGrad)" filter="url(#glow)" />
+  <polygon points="50,22 70,34 74,16" fill="url(#cyanGrad)" filter="url(#glow)" />
+  <polygon points="50,22 30,34 50,56" fill="#00e5ff" opacity="0.9" />
+  <polygon points="50,22 70,34 50,56" fill="#00b4d8" opacity="0.9" />
+  <polygon points="30,34 18,48 50,56" fill="#0077b6" opacity="0.8" />
+  <polygon points="70,34 82,48 50,56" fill="#023e8a" opacity="0.8" />
+  <polygon points="50,56 36,66 50,82" fill="#00e5ff" opacity="0.95" />
+  <polygon points="50,56 64,66 50,82" fill="#0096c7" opacity="0.95" />
+  <polygon points="36,66 22,58 30,76 50,82" fill="#03045e" opacity="0.7" />
+  <polygon points="64,66 78,58 70,76 50,82" fill="#03045e" opacity="0.7" />
+  <!-- Center Eye Nodes -->
+  <circle cx="42" cy="42" r="2.5" fill="#ffffff" />
+  <circle cx="58" cy="42" r="2.5" fill="#ffffff" />
+</svg>

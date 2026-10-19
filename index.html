@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoxRe // Open Fox Engine Documentation & Architectural Portal</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Marked.js for markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- KaTeX for LaTeX mathematical equations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="header-bar">
+    <div class="brand-box">
+      <img src="images/foxre_badge.png" alt="FoxRe Emblem" class="brand-emblem">
+      <div class="brand-title">
+        <span>FOXRE</span>
+        <span class="brand-tag">ENGINE PORTAL</span>
+      </div>
+    </div>
+    
+    <nav class="nav-tabs">
+      <button class="nav-tab-btn active" data-tab="dashboard">
+        <span>Dashboard & Hex Grid</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="mindmap">
+        <span>Interactive Mind Maps</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="tables">
+        <span>Data Tables & Registers</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="tools">
+        <span>Calculators & Tools</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="articles">
+        <span>Articles & Rosetta Stone</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main View Container -->
+  <div class="app-container">
+
+    <!-- TAB 1: DASHBOARD & HEXAGONAL HONEYCOMB -->
+    <section id="view-dashboard" class="tab-view active">
+      <div class="hex-grid-container">
+        
+        <!-- Live Status Metrics Bar -->
+        <div class="hero-stats-bar">
+          <div class="stat-tile">
+            <div id="stat-cracked-classes" class="stat-val">792</div>
+            <div class="stat-lbl">Cracked Classes (StrCode64)</div>
+          </div>
+          <div class="stat-tile">
+            <div id="stat-entity-classes" class="stat-val">1,137</div>
+            <div class="stat-lbl">PE Entity Classes (.edata)</div>
+          </div>
+          <div class="stat-tile">
+            <div id="stat-commands" class="stat-val">514</div>
+            <div class="stat-lbl">Verified SendCommands</div>
+          </div>
+          <div class="stat-tile">
+            <div id="stat-articles" class="stat-val">218</div>
+            <div class="stat-lbl">Engine & Community Topics</div>
+          </div>
+        </div>
+
+        <!-- Section Title -->
+        <div style="text-align: center; margin-top: 10px;">
+          <h2 style="font-size: 18px; font-weight: 800; letter-spacing: 1px; color: #fff;">CORE SUBSYSTEM HONEYCOMB</h2>
+          <p style="font-size: 13px; color: var(--text-dim); margin-top: 4px;">Click any hexagonal node to inspect its architectural specification and binary evidence.</p>
+        </div>
+
+        <!-- Honeycomb Hexagonal Tiles Container -->
+        <div id="hex-honeycomb" class="hex-honeycomb">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <!-- Charts & Data Visualizations Grid -->
+        <div class="charts-grid">
+          <!-- Class Resolution Doughnut Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div class="chart-title">
+                <span style="color: var(--cyan);">📊</span>
+                <span>Class Descriptor Resolution Rate</span>
+              </div>
+              <span class="badge-tag badge-cyan">1,491 Total</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-around; padding: 10px 0;">
+              <canvas id="chart-coverage" width="220" height="180"></canvas>
+              <div style="font-size: 12px; line-height: 1.8;">
+                <div><span style="color: var(--cyan); font-weight: bold;">■</span> Cracked Descriptors: <strong>792 (53.1%)</strong></div>
+                <div><span style="color: #64748b; font-weight: bold;">■</span> Unresolved Hashes: <strong>699 (46.9%)</strong></div>
+                <div><span style="color: var(--emerald); font-weight: bold;">■</span> Extracted PE Entities: <strong>1,137</strong></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QuarkSystemTable Call-Site Density Bar Chart -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div class="chart-title">
+                <span style="color: var(--amber);">🎛️</span>
+                <span>QuarkSystemTable Manager Activity</span>
+              </div>
+              <span class="badge-tag badge-amber">11,084 Engine Reads</span>
+            </div>
+            <canvas id="chart-quark" width="480" height="210"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 2: INTERACTIVE MIND MAPS -->
+    <section id="view-mindmap" class="tab-view">
+      <div style="max-width: 1300px; margin: 0 auto;">
+        <div style="margin-bottom: 16px;">
+          <h2 style="font-size: 18px; font-weight: 800; color: #fff;">INTERACTIVE SYSTEM MIND MAPS</h2>
+          <p style="font-size: 13px; color: var(--text-dim); margin-top: 4px;">Dynamic topological flowcharts mapping engine execution paths and component relationships.</p>
+        </div>
+
+        <div class="mindmap-viewport">
+          <div class="mindmap-toolbar">
+            <button class="mm-btn active" data-map="boot">Engine Boot Cascade</button>
+            <button class="mm-btn" data-map="fox2">.fox2 Level Spawning</button>
+            <button class="mm-btn" data-map="actor">15-Part Actor Topology</button>
+          </div>
+          <canvas id="mindmap-canvas" width="1280" height="640" style="width: 100%; height: 100%;"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: DATA TABLES & REGISTERS -->
+    <section id="view-tables" class="tab-view">
+      <div style="max-width: 1400px; margin: 0 auto;">
+        
+        <div class="data-table-container">
+          <div class="table-toolbar">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <label for="table-select" style="font-size: 12px; font-weight: 700; color: var(--text-dim);">DATASET:</label>
+              <select id="table-select" style="background: var(--bg-input); border: 1px solid var(--border-dim); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 13px;">
+                <option value="commands">SendCommands (514 Verified IDs)</option>
+                <option value="classes">Class Descriptors (792 Cracked Hashes)</option>
+                <option value="entities">Fox Entity Classes (1,137 PE ASCII Names)</option>
+                <option value="types">GameObject Types (80 Actor Types)</option>
+              </select>
+            </div>
+
+            <input type="text" id="table-search" class="table-search-input" placeholder="Live search dataset (e.g. SetRoute, Quiet, Damage)...">
+          </div>
+
+          <div style="max-height: 650px; overflow-y: auto;">
+            <table class="data-table">
+              <thead id="table-head">
+                <!-- Dynamically populated -->
+              </thead>
+              <tbody id="table-body">
+                <!-- Dynamically populated -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 4: CALCULATORS & INTERACTIVE TOOLS -->
+    <section id="view-tools" class="tab-view">
+      <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
+        
+        <div>
+          <h2 style="font-size: 18px; font-weight: 800; color: #fff;">INTERACTIVE ENGINE TOOLS & BLUEPRINTS</h2>
+          <p style="font-size: 13px; color: var(--text-dim); margin-top: 4px;">Live mathematical calculators and C++ virtual dispatch simulators.</p>
+        </div>
+
+        <!-- 16-Bit GameObjectId Calculator -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">
+              <span style="color: var(--cyan);">🧮</span>
+              <span>16-Bit GameObjectId Bidirectional Bitfield Calculator</span>
+            </div>
+            <span class="badge-tag badge-cyan">(typeIndex &lt;&lt; 9) | instanceIndex</span>
+          </div>
+
+          <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 16px;">
+            In Fox Engine, every actor ID is packed into a 16-bit integer where the high 7 bits dictate the actor type index and the low 9 bits dictate the instance slot (0 to 511).
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <div>
+              <label style="font-size: 12px; font-weight: 700; color: var(--text-dim); display: block; margin-bottom: 6px;">Actor Type Index (Bits 9–15):</label>
+              <select id="calc-type-select" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-dim); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 13px;"></select>
+            </div>
+
+            <div>
+              <label style="font-size: 12px; font-weight: 700; color: var(--text-dim); display: block; margin-bottom: 6px;">Instance Index (Bits 0–8, 0..511):</label>
+              <input type="number" id="calc-inst-input" value="0" min="0" max="511" style="width: 100%; background: var(--bg-input); border: 1px solid var(--border-dim); color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 13px;">
+            </div>
+
+            <div>
+              <label style="font-size: 12px; font-weight: 700; color: var(--cyan); display: block; margin-bottom: 6px;">Packed 16-Bit GameObjectId (Hex / Int):</label>
+              <input type="text" id="calc-packed-input" value="0x0000 (0)" style="width: 100%; background: var(--bg-input); border: 1px solid var(--cyan); color: var(--cyan); padding: 8px 12px; border-radius: 6px; font-size: 13px; font-family: var(--font-mono); font-weight: bold;">
+            </div>
+          </div>
+        </div>
+
+        <!-- ClassDescriptor ABI Specification Reference -->
+        <div class="chart-card">
+          <div class="chart-header">
+            <div class="chart-title">
+              <span style="color: var(--crimson);">🧬</span>
+              <span>ClassDescriptor 10-Slot Virtual Table Layout</span>
+            </div>
+            <span class="badge-tag badge-crimson">1,491 Classes</span>
+          </div>
+
+          <table class="data-table" style="margin-top: 10px;">
+            <thead>
+              <tr>
+                <th>Slot</th>
+                <th>Offset</th>
+                <th>ABI Method Role</th>
+                <th>Verified Technical Implementation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0</td><td><code>+0x00</code></td><td><code>~ClassDescriptor()</code></td><td>Deleting destructor for descriptor struct itself.</td></tr>
+              <tr><td>1</td><td><code>+0x08</code></td><td><code>CreateInstance()</code></td><td>Allocates actor memory via <code>Fox_AllocateMemory</code> (Quark[1]), calls Ctor, sets vtables.</td></tr>
+              <tr><td>2</td><td><code>+0x10</code></td><td><code>DestroyInstance(inst)</code></td><td>Dispatches virtual deleting destructor <code>(**inst->vtable)(inst, 1)</code>.</td></tr>
+              <tr><td>3</td><td><code>+0x18</code></td><td><code>DestroyRaw(inst)</code></td><td>Unwinds vtables directly and calls <code>Fox_FreeMemory(inst)</code>.</td></tr>
+              <tr><td>4</td><td><code>+0x20</code></td><td><code>SetupSystem(sys, params)</code></td><td>Binds controllers (Realizer, Notice, AI, Damage) via <code>QuarkSystemTable[0]</code>.</td></tr>
+              <tr><td>5</td><td><code>+0x28</code></td><td><code>TeardownSystem(sys)</code></td><td>Unregisters bound controllers and releases subsystem buffers.</td></tr>
+              <tr><td>6</td><td><code>+0x30</code></td><td><code>QueryInterface(hash)</code></td><td>Dynamic cast comparing 48-bit StrCode64. Returns adjusted pointer or 0.</td></tr>
+              <tr><td>7</td><td><code>+0x38</code></td><td><code>GetCategory(outCat)</code></td><td>Writes -1 (0xFFFFFFFF) into output pointer across 1,418 classes.</td></tr>
+              <tr><td>8</td><td><code>+0x40</code></td><td><code>GetDescriptorSingleton()</code></td><td>Returns static pointer to descriptor in <code>.data2</code> section.</td></tr>
+              <tr><td>9</td><td><code>+0x48</code></td><td><code>GetSuperClass(outType)</code></td><td>Writes base class type-info pointer from <code>[inst + 0x1A0]</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 5: ARTICLES & ROSETTA STONE -->
+    <section id="view-articles" class="tab-view">
+      <div style="max-width: 1200px; margin: 0 auto;">
+        <div style="margin-bottom: 20px;">
+          <h2 style="font-size: 18px; font-weight: 800; color: #fff;">ARCHITECTURAL ARTICLES & ROSETTA STONE</h2>
+          <p style="font-size: 13px; color: var(--text-dim); margin-top: 4px;">Verified deep-dive technical reports reconciling community observations with x64 binary ground truth.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px;">
+          <!-- Article Cards -->
+          <div class="stat-tile" style="cursor: pointer;" onclick="handleHexClick('rosetta-stone')">
+            <span class="badge-tag badge-amber">Rosetta Stone</span>
+            <h3 style="font-size: 16px; color: #fff; margin: 8px 0 4px;">Solving Community Mysteries</h3>
+            <p style="font-size: 12px; color: var(--text-dim);">Side-by-side reconciliation of unknown1, unknown2, and unmapped hashes with binary proof.</p>
+          </div>
+
+          <div class="stat-tile" style="cursor: pointer;" onclick="handleHexClick('arch-lifecycle')">
+            <span class="badge-tag badge-cyan">Core Spine</span>
+            <h3 style="font-size: 16px; color: #fff; margin: 8px 0 4px;">Engine Startup & Entrypoint Chain</h3>
+            <p style="font-size: 12px; color: var(--text-dim);">Trace from WinMain (0x140003AA0) through 12 package registrations to the master frame loop.</p>
+          </div>
+
+          <div class="stat-tile" style="cursor: pointer;" onclick="handleHexClick('arch-quark')">
+            <span class="badge-tag badge-amber">Memory & Managers</span>
+            <h3 style="font-size: 16px; color: #fff; margin: 8px 0 4px;">QuarkSystemTable Specification</h3>
+            <p style="font-size: 12px; color: var(--text-dim);">Detailed layout of all 25 active manager singletons at 0x142c6c0c0 across 11k engine call sites.</p>
+          </div>
+
+          <div class="stat-tile" style="cursor: pointer;" onclick="handleHexClick('fox2-reflection')">
+            <span class="badge-tag badge-emerald">Level Data</span>
+            <h3 style="font-size: 16px; color: #fff; margin: 8px 0 4px;">.fox2 Binary File Format</h3>
+            <p style="font-size: 12px; color: var(--text-dim);">DataSetFile2Header, 64-byte EntityDef, 32-byte PropertyDef chunks & 24 FoxDataTypes.</p>
+          </div>
+
+          <div class="stat-tile" style="cursor: pointer;" onclick="handleHexClick('actor-sahelan')">
+            <span class="badge-tag badge-crimson">Boss AI</span>
+            <h3 style="font-size: 16px; color: #fff; margin: 8px 0 4px;">Sahelanthropus Architecture</h3>
+            <p style="font-size: 12px; color: var(--text-dim);">All 2,651 functions, 39 AI behavior tree node tables, 7 weapon action plugins & BVH masks.</p>
+          </div>
+
+          <div class="stat-tile" style="cursor: pointer;" onclick="handleHexClick('ai-topology')">
+            <span class="badge-tag badge-purple">Modular Actors</span>
+            <h3 style="font-size: 16px; color: #fff; margin: 8px 0 4px;">15-Part Component Suite</h3>
+            <p style="font-size: 12px; color: var(--text-dim);">How Realizer, Life, Notice, Action, and Damage controllers assemble to form any gameplay actor.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Interactive Article Modal Dialog -->
+  <div id="article-modal" class="modal-overlay">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="modal-category" class="badge-tag badge-cyan">Category</span>
+          <h2 id="modal-title" style="font-size: 18px; color: #fff; margin-top: 4px;">Article Title</h2>
+        </div>
+        <button class="close-btn" onclick="closeArticleModal()">&times;</button>
+      </div>
+      <div id="modal-body" class="modal-body doc-container">
+        <!-- Markdown rendered content -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Database & Application Logic -->
+  <script src="js/wiki_database.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
